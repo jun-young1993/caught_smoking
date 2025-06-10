@@ -1,0 +1,45 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_common/constants/index.dart';
+import 'package:flutter_common/state/app/app_bloc.dart';
+import 'package:flutter_common/state/app_config/app_config_bloc.dart';
+import 'package:flutter_common/state/user/user_bloc.dart';
+import 'package:flutter_common/state/user/user_event.dart';
+import 'package:flutter_common/widgets/app/app_screen.dart';
+import 'package:flutter_common/widgets/layout/setting_screen_layout.dart';
+
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  AppBloc get appBloc => context.read<AppBloc>();
+  AppConfigBloc get appConfigBloc => context.read<AppConfigBloc>();
+  UserBloc get userBloc => context.read<UserBloc>();
+  @override
+  void initState() {
+    super.initState();
+    userBloc.add(const UserEvent.initialize());
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AppScreen(
+      screens: [
+        Text('hi'),
+        SettingScreenLayout(
+          appConfigBloc: appConfigBloc,
+          appKey: AppKeys.caughtSmoking,
+        ),
+      ],
+      items: [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+        BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+      ],
+      bloc: appBloc,
+    );
+  }
+}
