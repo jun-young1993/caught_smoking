@@ -9,17 +9,20 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // final SharedPreferences prefs = await SharedPreferences.getInstance();
   runApp(
-    CommonProvider(
-      dioClient: DioClient(),
-      sharedPreferences: await SharedPreferences.getInstance(),
-      appKey: AppKeys.caughtSmoking,
-      child: MyApp(),
+    MyApp(
+      child: CommonProvider(
+        dioClient: DioClient(),
+        sharedPreferences: await SharedPreferences.getInstance(),
+        appKey: AppKeys.caughtSmoking,
+        child: MainScreen(),
+      ),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final Widget child;
+  const MyApp({super.key, required this.child});
 
   // This widget is the root of your application.
   @override
@@ -29,7 +32,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: MainScreen(),
+      home: child,
     );
   }
 }

@@ -28,13 +28,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return AppScreen(
-      screens: [
-        Text('hi'),
-        SettingScreenLayout(
-          appConfigBloc: appConfigBloc,
-          appKey: AppKeys.caughtSmoking,
-        ),
-      ],
+      screens: [Text('hi'), SettingScreenLayout(appKey: AppKeys.caughtSmoking)],
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
         BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
