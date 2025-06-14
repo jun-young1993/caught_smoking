@@ -7,6 +7,7 @@ import 'package:flutter_common/state/user/user_bloc.dart';
 import 'package:flutter_common/state/user/user_event.dart';
 import 'package:flutter_common/widgets/app/app_screen.dart';
 import 'package:flutter_common/widgets/layout/setting_screen_layout.dart';
+import 'package:flutter_common/widgets/layout/notice_screen_layout.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -28,9 +29,14 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return AppScreen(
-      screens: [Text('hi'), SettingScreenLayout(appKey: AppKeys.caughtSmoking)],
+      screens: [
+        Text('hi'),
+        NoticeScreenLayout(groupName: 'parking-zone-code-02782'),
+        SettingScreenLayout(appKey: AppKeys.caughtSmoking),
+      ],
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+        BottomNavigationBarItem(icon: Icon(Icons.forum), label: '커뮤니티'),
         BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
       ],
       bloc: appBloc,
