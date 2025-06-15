@@ -35,9 +35,9 @@ class _MainScreenState extends State<MainScreen> {
         SettingScreenLayout(appKey: AppKeys.caughtSmoking),
       ],
       items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
         BottomNavigationBarItem(icon: Icon(Icons.forum), label: '커뮤니티'),
-        BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+        BottomNavigationBarItem(icon: Icon(Icons.settings), label: '설정'),
       ],
       bloc: appBloc,
     );
