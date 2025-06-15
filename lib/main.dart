@@ -9,19 +9,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await AdManager().initialize({
-    'android': {'banner': ''},
-    'ios': {'banner': 'ca-app-pub-4656262305566191/2338295208'},
-  });
+  await AdManager().initialize();
+  // {
+  //   'android': {'banner': ''},
+  //   'ios': {'banner': 'ca-app-pub-4656262305566191/2338295208'},
+  // }
   // final SharedPreferences prefs = await SharedPreferences.getInstance();
   runApp(
-    MyApp(
-      child: CommonProvider(
-        dioClient: DioClient(),
-        sharedPreferences: await SharedPreferences.getInstance(),
-        appKey: AppKeys.caughtSmoking,
-        child: MainScreen(),
-      ),
+    CommonProvider(
+      dioClient: DioClient(),
+      sharedPreferences: await SharedPreferences.getInstance(),
+      appKey: AppKeys.caughtSmoking,
+      child: MyApp(child: MainScreen()),
     ),
   );
 }
